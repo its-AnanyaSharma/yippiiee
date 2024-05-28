@@ -21,7 +21,7 @@ function formatTime(seconds) {
 
 async function getSongs(folder) {
     currFolder = folder;
-    let a = await fetch(`https://github.com/its-AnanyaSharma/yippiiee/tree/main/songs`)
+    let a = await fetch(`/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -30,7 +30,7 @@ async function getSongs(folder) {
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split(`https://github.com/its-AnanyaSharma/yippiiee/tree/main/songs`)[1])
+            songs.push(element.href.split(`/${folder}/`)[1])
         }
     }
  
