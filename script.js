@@ -21,7 +21,21 @@ function formatTime(seconds) {
 
 async function getSongs(folder) {
     currFolder = folder;
-    let a = await fetch(`/${folder}/`)
+    // let a = await fetch(`/${folder}/`)
+    let a = new XMLHttpRequest();
+a.open('GET', `/${folder}/`, true);
+a.onload = function () {
+  if (a.status >= 200 && a.status < 300) {
+    console.log(a.responseText);
+  } else {
+    console.error(a.statusText);
+  }
+};
+a.onerror = function () {
+  console.error(a.statusText);
+};
+a.send();
+
     console.log('Runningg JavaScript....1');
     let response = await a.text();
     let div = document.createElement("div")
