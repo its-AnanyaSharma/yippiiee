@@ -21,7 +21,7 @@ function formatTime(seconds) {
 
 async function getSongs(folder) {
     currFolder = folder;
-    let a = await fetch(`/${folder}/`)
+    let a = await fetch(`songs/${folder}/`);
     console.log('Runningg JavaScript....1');
     let response = await a.text();
     let div = document.createElement("div")
@@ -70,7 +70,7 @@ async function getSongs(folder) {
 }
 
 const playMusic = (track, pause = false) => {
-    currentSong.src = `/${currFolder}/` + track
+    currentSong.src = `songs/${currFolder}/${track}` 
     console.log('Runningg JavaScript....2');
     if (!pause) {
         currentSong.play()
@@ -83,7 +83,7 @@ const playMusic = (track, pause = false) => {
 }
 
 async function displayAlbums(){
-    let a = await fetch(`/songs/`)
+    let a = await fetch(`songs/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -132,7 +132,7 @@ async function displayAlbums(){
 async function main() {
     console.log('Runningg JavaScript....3');
     // Get the list of all the songs
-    await getSongs("songs/happy")
+    await getSongs("happy")
     playMusic(songs[0], true)
 
     // Display all the albums on the page
