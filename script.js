@@ -21,7 +21,7 @@ function formatTime(seconds) {
 
 async function getSongs(folder) {
     currFolder = folder;
-    let a = await fetch(`songs/${folder}/`)
+    let a = await fetch(`/${folder}/`)
     console.log('Runningg JavaScript....1');
     let response = await a.text();
     let div = document.createElement("div")
@@ -31,7 +31,7 @@ async function getSongs(folder) {
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split(`songs/${folder}/`)[1])
+            songs.push(element.href.split(`/${folder}/`)[1])
         }
     }
  
