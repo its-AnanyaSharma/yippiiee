@@ -1,4 +1,4 @@
-console.log('Lets write JavaScript');
+console.log('Runningg JavaScript....');
 let currentSong = new Audio();
 let songs;
 let currFolder;
@@ -21,9 +21,7 @@ function formatTime(seconds) {
 
 async function getSongs(folder) {
     currFolder = folder;
-     try{console.log(`Fetching: ./songs/${folder}/`);
-    let a = await fetch(`./songs/${folder}/`);
-    // let a = await fetch(`/${folder}/`)
+    let a = await fetch(`/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -35,8 +33,7 @@ async function getSongs(folder) {
             songs.push(element.href.split(`/${folder}/`)[1])
         }
     }
-        }catch (error) {
-        console.error('Error fetching songs:', error);
+ 
 
 
     // Show all the songs in the playlist
